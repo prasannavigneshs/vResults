@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vResults</title>
+    <link rel = "stylesheet" href = "{{url_for('static',filename='css/bootstrap.min.css')}}">
+    <link rel = "stylesheet" href = "{{url_for('static',filename='css/style.css')}}">
+    <link rel = "stylesheet" href = "{{url_for('static',filename='css/font-awesome.min.css')}}">
+    <link rel="icon" type="image/ico" href="{{url_for('static',filename='uploads/logo.png')}}">
+    <link rel="shortcut icon" href="#">
+
+</head>
+    <body>
+
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div class="wrapper">
+                <div class="file-upload">
+                    <input type="file" id="file" name="file" onchange="document.getElementById('btn').click()"/>
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+                <button type="submit" onclick="document.getElementById('uploading').style.display ='block';" id="btn"  style="display:none"></button>
+            </div>
+        </form>
+
+        <div id="uploading" class="modal modal-extra">
+            <img src="{{url_for('static',filename='uploads/processing.gif')}}" class="modal-content modal-content-extra">
+            <div class="caption">Processing</div>
+        </div>
+
+        <div class = "text-center" style="margin-top:20px">
+            {% if pdf_uploaded %}
+                <h4>Now upload the excel file</h4>
+            {% elif excel_processed %}
+                <a class="btn btn-primary" style="border-color:white;" href="/static/uploads/{{filename}}" download>Download file</a>
+            {% endif %}
+        </div>
+
+    <footer>
+        <div class="footer">
+            <div class="text-center">
+                <h4>© Created by Prasanna Vignesh</h4>
+            </div>
+        </div>
+    </footer>
+
+    <script src = "{{url_for('static', filename = 'js/jquery-3.2.1.slim.min.js')}}"></script>
+    <script src = "{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+
+    </body>
+</html>
